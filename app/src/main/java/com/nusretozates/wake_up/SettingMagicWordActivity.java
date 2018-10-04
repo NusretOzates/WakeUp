@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -23,6 +24,7 @@ public class SettingMagicWordActivity extends AppCompatActivity {
     private int day,month,year,hour,minute;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,8 @@ public class SettingMagicWordActivity extends AppCompatActivity {
         datePicker = findViewById(R.id.takvim);
         timePicker = findViewById(R.id.timepicker);
         button = findViewById(R.id.button);
-
+        final Drawable dateselectorDrawable = getDrawable(R.drawable.date_selector_design);
+        final Drawable hour_selector_drawable = getDrawable(R.drawable.hour_selector_design);
 
 
         Calendar  c = Calendar.getInstance();
@@ -39,18 +42,23 @@ public class SettingMagicWordActivity extends AppCompatActivity {
         timePicker.setHour(c.getTime().getHours());
         timePicker.setMinute(c.getTime().getMinutes());
 
+
+        button.setBackground(dateselectorDrawable);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               if (button.getText().equals("Tarihi Seç"))
+
+
+                if (button.getBackground() == dateselectorDrawable)
                {
+
                    day = datePicker.getDayOfMonth();
                    month = datePicker.getMonth();
                    year = datePicker.getYear();
                    Toast.makeText(SettingMagicWordActivity.this, day + " " + month + " " + year, Toast.LENGTH_SHORT).show();
                    timePicker.setVisibility(View.VISIBLE);
                    datePicker.setVisibility(View.INVISIBLE);
-                   button.setText("Saati Seç");
+                   button.setBackground(hour_selector_drawable);
                }else
                {
                    hour = timePicker.getHour();
