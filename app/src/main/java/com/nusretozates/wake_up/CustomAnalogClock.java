@@ -71,7 +71,7 @@ public class CustomAnalogClock extends View {
         }
 
         /** draw the canvas-color */
-        canvas.drawColor(Color.LTGRAY);
+        canvas.drawColor(Color.rgb(229, 229, 229));
 
 
         /** circle border */
