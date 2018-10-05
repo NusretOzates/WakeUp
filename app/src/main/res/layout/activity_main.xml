@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/acikmor"
+    android:background="#e5e5e5"
     tools:context=".MainActivity">
 
     <com.nusretozates.wake_up.CustomAnalogClock
         android:id="@+id/customAnalogClock"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        android:layout_marginTop="64dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
@@ -22,8 +22,8 @@
 
     <Button
         android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="349dp"
+        android:layout_height="52dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/wakeup"
         android:clickable="false"
@@ -34,10 +34,10 @@
 
     <TextView
         android:id="@+id/text1"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="321dp"
+        android:layout_height="45dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/saat"
         android:gravity="center_vertical"
         android:textAlignment="center"
@@ -45,64 +45,87 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/customAnalogClock"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/saat"
-        android:layout_width="47dp"
+        android:layout_width="40dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:autoSizeTextType="uniform"
-        android:background="@drawable/saa1"
+        android:background="@drawable/saal"
         android:gravity="center_vertical"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="@+id/text1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintEnd_toStartOf="@+id/ciftnokta"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/text1"
-        app:layout_constraintTop_toTopOf="@+id/text1" />
+        app:layout_constraintTop_toTopOf="@+id/text1"
+        app:layout_constraintVertical_bias="0.533" />
 
     <TextView
         android:id="@+id/dakika"
-        android:layout_width="47dp"
+        android:layout_width="40dp"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:autoSizeTextType="uniform"
-        android:background="@drawable/saa1"
+        android:background="@drawable/saal"
         android:gravity="center_vertical"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="@+id/text1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/saat"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ciftnokta"
         app:layout_constraintTop_toTopOf="@+id/text1" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="84dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="314dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:background="@drawable/alarm_kur"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/alarm_list"
         android:layout_width="357dp"
         android:layout_height="148dp"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/saat" />
+
+    <TextView
+        android:id="@+id/ciftnokta"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="8dp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center_horizontal"
+        android:text=":"
+        android:textAlignment="center"
+        android:textColor="@color/acikmor"
+        app:layout_constraintBottom_toBottomOf="@+id/text1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/text1"
+        app:layout_constraintTop_toTopOf="@+id/text1"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

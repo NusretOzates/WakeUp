@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -22,6 +23,7 @@ public class SettingMagicWordActivity extends AppCompatActivity {
     private TimePicker timePicker;
     private Button button;
     private int day,month,year,hour,minute;
+    private  static  int alarmID = 1000;
 
 
 
@@ -68,12 +70,20 @@ public class SettingMagicWordActivity extends AppCompatActivity {
                    //Create a new PendingIntent and add it to the AlarmManager
                    Intent intent = new Intent(SettingMagicWordActivity.this, AlarmRecieverActivity.class);
                    PendingIntent pendingIntent = PendingIntent.getActivity(SettingMagicWordActivity.this,
-                           12345, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                           alarmID, intent, PendingIntent.FLAG_CANCEL_CURRENT);
                    AlarmManager am =
                            (AlarmManager)getSystemService(Activity.ALARM_SERVICE);
                    am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
                            pendingIntent);
-                    finishAndRemoveTask();
+
+
+                   String saat = String.valueOf(hour) + " : " + String.valueOf(minute);
+                   String tarih = String.valueOf(day) + "/" + String.valueOf(month) + "/" + String.valueOf(year);
+
+                   Alarm.alarms.add(new Alarm(saat,tarih,alarmID));
+                   alarmID++;
+                    Intent i = new Intent(SettingMagicWordActivity.this,MainActivity.class);
+                    startActivity(i);
                }
             }
         });
