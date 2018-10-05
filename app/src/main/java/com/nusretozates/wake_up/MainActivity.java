@@ -41,29 +41,38 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
         recyclerView = findViewById(R.id.alarm_list);
         AlarmAdapter alarmAdapter = new AlarmAdapter(this,Alarm.alarms);
         recyclerView.setAdapter(alarmAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
+
 //        AlarmManager manager = (AlarmManager)getSystemService(Activity.ALARM_SERVICE);
 //        AlarmManager.AlarmClockInfo info = manager.getNextAlarmClock();
 //        PendingIntent pendingIntent = info.getShowIntent();
 //        int alarmID = pendingIntent.getCreatorUid();
     }
 
+    //Update textview(time) every second.
     class UpdateTimeTask extends TimerTask {
         public void run() {
-            Calendar c = Calendar.getInstance();
-            if (c.getTime().getHours() < 10) {
-                textView.setText("0" + String.valueOf(c.getTime().getHours()));
-            } else
-                textView.setText(String.valueOf(c.getTime().getHours()));
-            if (c.getTime().getMinutes() < 10) {
-                textView2.setText("0" + String.valueOf(c.getTime().getMinutes()));
-            } else
-                textView2.setText(String.valueOf(c.getTime().getMinutes()));
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Calendar c = Calendar.getInstance();
+                    if (c.getTime().getHours() < 10) {
+                        textView.setText("0" + String.valueOf(c.getTime().getHours()));
+                    } else
+                        textView.setText(String.valueOf(c.getTime().getHours()));
+                    if (c.getTime().getMinutes() < 10) {
+                        textView2.setText("0" + String.valueOf(c.getTime().getMinutes()));
+                    } else
+                        textView2.setText(String.valueOf(c.getTime().getMinutes()));
+                }
+            });
 
         }
     }
