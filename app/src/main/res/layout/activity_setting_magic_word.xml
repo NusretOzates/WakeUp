@@ -3,18 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_setting_magic_word"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/acikmor"
+    >
 
     <DatePicker
         android:id="@+id/takvim"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
+        android:datePickerMode="calendar"
+        android:headerBackground="@color/cardview_dark_background"
         android:scaleX="1.1"
         android:scaleY="1.1"
+        android:selectedWeekBackgroundColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

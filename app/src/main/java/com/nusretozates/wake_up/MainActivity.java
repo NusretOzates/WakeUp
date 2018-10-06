@@ -1,8 +1,5 @@
 package com.nusretozates.wake_up;
 
-import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     Calendar c = Calendar.getInstance();
     private TextView textView;
     private TextView textView2;
-    private Button   newAlarmButton;
+    private Button newAlarmButton;
     private RecyclerView recyclerView;
 
     @Override
@@ -37,23 +34,22 @@ public class MainActivity extends AppCompatActivity {
         newAlarmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,SettingMagicWordActivity.class);
+                Intent i = new Intent(MainActivity.this, SettingMagicWordActivity.class);
                 startActivity(i);
             }
         });
 
+
         recyclerView = findViewById(R.id.alarm_list);
-        AlarmAdapter alarmAdapter = new AlarmAdapter(this,Alarm.alarms);
+        AlarmAdapter alarmAdapter = new AlarmAdapter(this, Alarm.alarms);
         recyclerView.setAdapter(alarmAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-//        AlarmManager manager = (AlarmManager)getSystemService(Activity.ALARM_SERVICE);
-//        AlarmManager.AlarmClockInfo info = manager.getNextAlarmClock();
-//        PendingIntent pendingIntent = info.getShowIntent();
-//        int alarmID = pendingIntent.getCreatorUid();
+
     }
+
 
     //Update textview(time) every second.
     class UpdateTimeTask extends TimerTask {

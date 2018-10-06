@@ -1,7 +1,12 @@
 package com.nusretozates.wake_up;
 
+import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +15,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class AlarmAdapter extends    RecyclerView.Adapter<AlarmAdapter.MyViewHolder>
+public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.MyViewHolder>
 {
 
     ArrayList<Alarm> mProductList;
@@ -50,10 +55,10 @@ public class AlarmAdapter extends    RecyclerView.Adapter<AlarmAdapter.MyViewHol
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            alarmsaati = (TextView) itemView.findViewById(R.id.saatim);
-            alarmtarihi = (TextView) itemView.findViewById(R.id.tarih);
-            productImage = (ImageView) itemView.findViewById(R.id.productImage);
-            alarmID = (TextView) itemView.findViewById(R.id.alarmID);
+            alarmsaati =  itemView.findViewById(R.id.saatim);
+            alarmtarihi =  itemView.findViewById(R.id.tarih);
+            productImage =  itemView.findViewById(R.id.productImage);
+            alarmID =  itemView.findViewById(R.id.alarmID);
             productImage.setOnClickListener(this);
 
         }
@@ -63,13 +68,24 @@ public class AlarmAdapter extends    RecyclerView.Adapter<AlarmAdapter.MyViewHol
             this.alarmsaati.setText(selectedProduct.getAlarmsaat());
             this.alarmtarihi.setText(selectedProduct.getAlarmgun());
             this.productImage.setImageResource(selectedProduct.getImageID());
+            this.alarmID.setText(selectedProduct.getAlarmID());
         }
 
 
         @Override
         public void onClick(View v) {
 
-            Alarm.alarms.remove(new Alarm(alarmsaati.getText().toString(),alarmtarihi.getText().toString(),Integer.valueOf(alarmID.getText().toString())));
+            Alarm.alarms.remove(new Alarm(alarmsaati.getText().toString(),alarmtarihi.getText().toString(),alarmID.getText().toString()));
+            Log.d("Alarm Remove","Alarm REMOVED");
+            Intent intent = new Intent(v.getContext(), AlarmRecieverActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(v.getContext(),
+                    Integer.valueOf(alarmID.getText().toString()), intent, PendingIntent.FLAG_CANCEL_CURRENT);
+            AlarmManager am =
+                    (AlarmManager)v.getContext().getSystemService(Activity.ALARM_SERVICE);
+           am.cancel(pendingIntent);
+            Intent a = new Intent(v.getContext(),MainActivity.class);
+            v.getContext().startActivity(a);
+
         }
     }
 
