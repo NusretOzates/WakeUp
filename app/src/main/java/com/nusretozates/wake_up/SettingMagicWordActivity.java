@@ -87,8 +87,10 @@ public class SettingMagicWordActivity extends AppCompatActivity {
                            alarmID, intent, PendingIntent.FLAG_CANCEL_CURRENT);
                    AlarmManager am =
                            (AlarmManager)getSystemService(Activity.ALARM_SERVICE);
-                   am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
-                           pendingIntent);
+                   if (am != null) {
+                       am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
+                               pendingIntent);
+                   }
 
                    String saat = String.valueOf(hour) + " : " + String.valueOf(minute);
                    String tarih = String.valueOf(day) + "/" + String.valueOf(month) + "/" + String.valueOf(year);
