@@ -7,9 +7,9 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -18,7 +18,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.VideoView;
-
 
 import java.io.IOException;
 
@@ -67,11 +66,11 @@ public class AlarmRecieverActivity extends AppCompatActivity {
        // makeDialog();
         playSound(this, getAlarmUri());
 
-        Button stopAlarm = (Button) findViewById(R.id.stopAlarm);
+        Button stopAlarm = findViewById(R.id.stopAlarm);
         stopAlarm.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 mMediaPlayer.stop();
-                finish();
+                finishAndRemoveTask();
             }
         });
 
