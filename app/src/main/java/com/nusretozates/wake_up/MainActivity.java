@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, SettingMagicWordActivity.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.screen_toleft, R.anim.screen_toright);
             }
         });
 
@@ -71,6 +72,12 @@ public class MainActivity extends AppCompatActivity {
             });
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.screen_toleft, R.anim.screen_toright);
     }
 }
 

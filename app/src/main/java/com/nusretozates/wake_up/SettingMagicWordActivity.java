@@ -7,10 +7,10 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -21,13 +21,17 @@ import java.util.Calendar;
 public class SettingMagicWordActivity extends AppCompatActivity {
 
     private DatePicker datePicker;
-    private CalendarView view;
     private TimePicker timePicker;
     private Button button;
     private int day,month,year,hour,minute;
     private  static  int alarmID = 1000;
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.screen_toleft, R.anim.screen_toright);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +63,18 @@ public class SettingMagicWordActivity extends AppCompatActivity {
                    month = datePicker.getMonth();
                    year = datePicker.getYear();
                    Toast.makeText(SettingMagicWordActivity.this, day + " " + month + " " + year, Toast.LENGTH_SHORT).show();
-                   timePicker.setVisibility(View.VISIBLE);
-                   datePicker.setVisibility(View.INVISIBLE);
 
+                   Animation animation = AnimationUtils.loadAnimation(SettingMagicWordActivity.this, R.anim.screen_toright);
+                   datePicker.setAnimation(animation);
+                   datePicker.animate();
+                   datePicker.setVisibility(View.INVISIBLE);
                    button.setBackground(hour_selector_drawable);
+
+                   timePicker.setVisibility(View.VISIBLE);
+                   animation = AnimationUtils.loadAnimation(SettingMagicWordActivity.this, R.anim.screen_toleft);
+                   timePicker.setAnimation(animation);
+                   timePicker.animate();
+
                }else
                {
                    hour = timePicker.getHour();
@@ -78,7 +90,6 @@ public class SettingMagicWordActivity extends AppCompatActivity {
                    am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
                            pendingIntent);
 
-
                    String saat = String.valueOf(hour) + " : " + String.valueOf(minute);
                    String tarih = String.valueOf(day) + "/" + String.valueOf(month) + "/" + String.valueOf(year);
 
@@ -86,6 +97,7 @@ public class SettingMagicWordActivity extends AppCompatActivity {
                     alarmID++;
                     Intent i = new Intent(SettingMagicWordActivity.this,MainActivity.class);
                     startActivity(i);
+                   overridePendingTransition(R.anim.screen_toleft, R.anim.screen_toright);
 
                }
             }
