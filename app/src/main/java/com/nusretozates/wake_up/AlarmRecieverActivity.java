@@ -22,9 +22,10 @@ import android.widget.VideoView;
 import java.io.IOException;
 
 public class AlarmRecieverActivity extends AppCompatActivity {
-    private MediaPlayer mMediaPlayer;
+    public static MediaPlayer mMediaPlayer;
     private PowerManager.WakeLock wl;
     private VideoView videoView;
+    private Calendar calendar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,8 @@ public class AlarmRecieverActivity extends AppCompatActivity {
         videoView = findViewById(R.id.videoView);
         Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.sunrise);
         videoView.setVideoURI(uri);
-
+        calendar = findViewById(R.id.slider);
+        calendar.setActivity(this);
 
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override

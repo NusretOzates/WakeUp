@@ -28,6 +28,7 @@
         android:layout_marginBottom="0dp" />
 
     <com.nusretozates.wake_up.Calendar
+        android:id="@+id/slider"
         android:layout_width="match_parent"
         android:layout_height="83dp"
         android:layout_alignParentStart="true"
