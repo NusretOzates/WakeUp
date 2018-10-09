@@ -1,10 +1,15 @@
 package com.nusretozates.wake_up;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
+import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class Calendar extends View
@@ -15,35 +20,38 @@ public class Calendar extends View
      */
     private int mHeight, mWidth = 0;
 
-    /**
-     * numeric numbers to denote the hours
-     */
-    private int[] dayofMonths = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31};
+    Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.slider_saat);
 
-    /**
-     * spacing and padding of the clock-hands around the clock round
-     */
-    private int mPadding = 0;
-    private int mNumeralSpacing = 0;
     private Paint mPaint;
-    private Rect mRect = new Rect();
-    private boolean isInit;  // it will be true once the clock will be initialized.
+    int drawingpic_x = 0, drawingpic_y = 0;
+    int drawingPicWidth;
+    int drawingPicHeight;
+    int drawingPicOffset_x = 0, drawingPicOffset_y = 0;
+    float a = 0;
+    private float x, y;
+    private boolean isInit, touching, drawingTouch;  // it will be true once the clock will be initialized.
+
+
 
 
     public Calendar(Context context) {
         super(context);
     }
 
+    public Calendar(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+    }
+
     @Override
-    protected void onDraw(Canvas canvas)
-    {
+    protected void onDraw(Canvas canvas) {
 
         if (!isInit) {
             mPaint = new Paint();
             mHeight = getHeight();
             mWidth = getWidth();
-            mPadding = mNumeralSpacing + 50;  // spacing from the circle border
+            bitmap = Bitmap.createScaledBitmap(bitmap, mWidth * 25 / 100, mHeight - 60, false);
             isInit = true;  // set true once initialized
+
         }
 
         /** draw the canvas-color */
@@ -52,21 +60,37 @@ public class Calendar extends View
         mPaint.reset();
         mPaint.setColor(Color.BLUE);
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        mPaint.setStrokeWidth(4);
+        mPaint.setStrokeWidth(6);
         mPaint.setAntiAlias(true);
-        canvas.drawRect(0,0,mWidth,mHeight/3,mPaint);
+        mPaint.setAlpha(40);
+        canvas.drawRoundRect(25f, 25f, ((float) mWidth - 35), ((float) mHeight - 35), 50f, 50f, mPaint);
 
         mPaint.reset();
-        mPaint.setColor(Color.BLACK);
-        mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        mPaint.setStrokeWidth(4);
-        mPaint.setAntiAlias(true);
-        canvas.drawRect(0,mHeight/3,mWidth,mHeight,mPaint);
+
+        canvas.drawBitmap(bitmap, 25f + a - ((mWidth * 25 / 100) / 2), 25f, mPaint);
         postInvalidateDelayed(500);
         invalidate();
 
 
+    }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = event.getAction();
+        switch (action) {
+            case MotionEvent.ACTION_BUTTON_PRESS:
+                drag
+        }
+        invalidate();
+        return true;
 
+    }
+
+    @Override
+    public boolean onDragEvent(DragEvent event) {
+        int action = event.getAction();
+        if (action == DragEvent.ACTION_DRAG_ENTERED) {
+            a = event.getX();
+        }
     }
 }
