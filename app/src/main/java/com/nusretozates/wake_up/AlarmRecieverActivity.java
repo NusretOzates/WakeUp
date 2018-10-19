@@ -87,6 +87,13 @@ public class AlarmRecieverActivity extends AppCompatActivity {
                 mMediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
                 mMediaPlayer.prepare();
                 mMediaPlayer.start();
+                mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mMediaPlayer.seekTo(0);
+                        mMediaPlayer.start();
+                    }
+                });
             }
         } catch (IOException e) {
             System.out.println("OOPS");
