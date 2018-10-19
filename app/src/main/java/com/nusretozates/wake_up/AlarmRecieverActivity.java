@@ -30,7 +30,6 @@ public class AlarmRecieverActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-
         wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "myapp: Mywakelogtag");
         wl.acquire();
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);

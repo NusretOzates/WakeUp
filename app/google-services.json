@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "85530058048",
+    "firebase_url": "https://wake-up-your-reminder.firebaseio.com",
+    "project_id": "wake-up-your-reminder",
+    "storage_bucket": "wake-up-your-reminder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85530058048:android:2d235f233db27eda",
+        "android_client_info": {
+          "package_name": "com.nusretozates.wake_up"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85530058048-vqptdiobkrsvmdfoiaqp35nfc290a602.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nusretozates.wake_up",
+            "certificate_hash": "813e67ed47dd7d24e4d270ea9e2cf4443bafb89d"
+          }
+        },
+        {
+          "client_id": "85530058048-daeorvl9sdqrpf9pn9gud0pq9gvjvsf0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMGKUeI_RomgWXxvm5dRawkxG45yJUoO0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "85530058048-daeorvl9sdqrpf9pn9gud0pq9gvjvsf0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

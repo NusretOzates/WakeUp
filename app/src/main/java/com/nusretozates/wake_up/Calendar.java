@@ -39,6 +39,14 @@ public class Calendar extends View
         super(context, attrs);
     }
 
+    public Calendar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    public Calendar(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
     public void setActivity(Activity activity) {
         myactivity = activity;
 
