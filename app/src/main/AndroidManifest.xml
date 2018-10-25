@@ -12,12 +12,12 @@
         android:roundIcon="@mipmap/yuvarlak"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingMagicWordActivity">
+        <activity android:name=".Activities.SetAlarmActivity">
         </activity>
         <activity
-            android:name=".AlarmRecieverActivity"
+            android:name=".Activities.AlarmRecieverActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

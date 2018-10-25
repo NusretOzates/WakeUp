@@ -1,4 +1,4 @@
-package com.nusretozates.wake_up;
+package com.nusretozates.wake_up.Activities;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -17,7 +17,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.VideoView;
+
+import com.nusretozates.wake_up.CustomViews.Slider;
+import com.nusretozates.wake_up.R;
+import com.nusretozates.wake_up.Utils.RandomStringGenerator;
 
 import java.io.IOException;
 
@@ -25,7 +30,9 @@ public class AlarmRecieverActivity extends AppCompatActivity {
     public static MediaPlayer mMediaPlayer;
     private PowerManager.WakeLock wl;
     private VideoView videoView;
-    private Calendar calendar;
+    private Slider slider;
+    private TextView secretText;
+    private EditText code;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +50,19 @@ public class AlarmRecieverActivity extends AppCompatActivity {
                         WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
         setContentView(R.layout.activity_alarm_reciever);
 
+        code = findViewById(R.id.codeInput);
+        secretText = findViewById(R.id.secretCode);
         videoView = findViewById(R.id.videoView);
         Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.sunrise);
         videoView.setVideoURI(uri);
-        calendar = findViewById(R.id.slider);
-        calendar.setActivity(this);
+        slider = findViewById(R.id.slider);
+        slider.setActivity(this);
+        slider.setVisibility(View.INVISIBLE);
+
+        RandomStringGenerator generator = new RandomStringGenerator();
+        final String randomText = generator.generate(7);
+        secretText.setText(randomText);
+
 
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
@@ -67,13 +82,26 @@ public class AlarmRecieverActivity extends AppCompatActivity {
        // makeDialog();
         playSound(this, getAlarmUri());
 
-        Button stopAlarm = findViewById(R.id.stopAlarm);
-        stopAlarm.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-                mMediaPlayer.stop();
-                finishAndRemoveTask();
+
+        code.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (code.getText().toString().equals(randomText)) {
+                    slider.setVisibility(View.VISIBLE);
+                }
             }
         });
+
 
     }
     private void playSound(Context context, Uri alert) {
@@ -164,5 +192,14 @@ public class AlarmRecieverActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
     }
 }

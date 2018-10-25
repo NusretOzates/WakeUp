@@ -1,4 +1,4 @@
-package com.nusretozates.wake_up;
+package com.nusretozates.wake_up.Utils;
 
 import java.util.Random;
 

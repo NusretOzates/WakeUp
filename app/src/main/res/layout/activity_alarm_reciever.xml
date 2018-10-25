@@ -3,16 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AlarmRecieverActivity">
-
-    <Button
-        android:id="@+id/stopAlarm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="188dp"
-        android:background="@drawable/group" />
+    tools:context=".Activities.AlarmRecieverActivity">
 
     <VideoView
         android:id="@+id/videoView"
@@ -27,7 +18,7 @@
         android:layout_marginRight="0dp"
         android:layout_marginBottom="0dp" />
 
-    <com.nusretozates.wake_up.Calendar
+    <com.nusretozates.wake_up.CustomViews.Slider
         android:id="@+id/slider"
         android:layout_width="match_parent"
         android:layout_height="83dp"
@@ -38,5 +29,31 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="6dp" />
+
+    <TextView
+        android:id="@+id/secretCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/nicomoji"
+        android:text="Secret Code"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="55sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/codeInput"
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="260dp"
+        android:background="@drawable/rounded_text_view"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
 
 </RelativeLayout>

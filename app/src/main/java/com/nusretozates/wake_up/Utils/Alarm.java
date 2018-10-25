@@ -1,4 +1,6 @@
-package com.nusretozates.wake_up;
+package com.nusretozates.wake_up.Utils;
+
+import com.nusretozates.wake_up.R;
 
 import java.util.ArrayList;
 import java.util.Objects;

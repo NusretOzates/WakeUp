@@ -1,4 +1,4 @@
-package com.nusretozates.wake_up;
+package com.nusretozates.wake_up.CustomViews;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -1,4 +1,4 @@
-package com.nusretozates.wake_up;
+package com.nusretozates.wake_up.Adapters;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -12,6 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.nusretozates.wake_up.Activities.AlarmRecieverActivity;
+import com.nusretozates.wake_up.Activities.MainActivity;
+import com.nusretozates.wake_up.R;
+import com.nusretozates.wake_up.Utils.Alarm;
 
 import java.util.ArrayList;
 

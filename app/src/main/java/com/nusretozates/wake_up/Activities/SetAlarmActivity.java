@@ -1,4 +1,4 @@
-package com.nusretozates.wake_up;
+package com.nusretozates.wake_up.Activities;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -15,10 +15,13 @@ import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.nusretozates.wake_up.R;
+import com.nusretozates.wake_up.Utils.Alarm;
+
 import java.util.Calendar;
 
 
-public class SettingMagicWordActivity extends AppCompatActivity {
+public class SetAlarmActivity extends AppCompatActivity {
 
     private DatePicker datePicker;
     private TimePicker timePicker;
@@ -62,16 +65,16 @@ public class SettingMagicWordActivity extends AppCompatActivity {
                    day = datePicker.getDayOfMonth();
                    month = datePicker.getMonth();
                    year = datePicker.getYear();
-                   Toast.makeText(SettingMagicWordActivity.this, day + " " + month + " " + year, Toast.LENGTH_SHORT).show();
+                   Toast.makeText(SetAlarmActivity.this, day + " " + month + " " + year, Toast.LENGTH_SHORT).show();
 
-                   Animation animation = AnimationUtils.loadAnimation(SettingMagicWordActivity.this, R.anim.screen_toright);
+                   Animation animation = AnimationUtils.loadAnimation(SetAlarmActivity.this, R.anim.screen_toright);
                    datePicker.setAnimation(animation);
                    datePicker.animate();
                    datePicker.setVisibility(View.INVISIBLE);
                    button.setBackground(hour_selector_drawable);
 
                    timePicker.setVisibility(View.VISIBLE);
-                   animation = AnimationUtils.loadAnimation(SettingMagicWordActivity.this, R.anim.screen_toleft);
+                   animation = AnimationUtils.loadAnimation(SetAlarmActivity.this, R.anim.screen_toleft);
                    timePicker.setAnimation(animation);
                    timePicker.animate();
 
@@ -82,8 +85,8 @@ public class SettingMagicWordActivity extends AppCompatActivity {
                    Calendar cal = Calendar.getInstance();
                   cal.set(year,month,day,hour,minute);
                    //Create a new PendingIntent and add it to the AlarmManager
-                   Intent intent = new Intent(SettingMagicWordActivity.this, AlarmRecieverActivity.class);
-                   PendingIntent pendingIntent = PendingIntent.getActivity(SettingMagicWordActivity.this,
+                   Intent intent = new Intent(SetAlarmActivity.this, AlarmRecieverActivity.class);
+                   PendingIntent pendingIntent = PendingIntent.getActivity(SetAlarmActivity.this,
                            alarmID, intent, PendingIntent.FLAG_CANCEL_CURRENT);
                    AlarmManager am =
                            (AlarmManager)getSystemService(Activity.ALARM_SERVICE);
@@ -97,7 +100,7 @@ public class SettingMagicWordActivity extends AppCompatActivity {
 
                    Alarm.alarms.add(new Alarm(saat,tarih,String.valueOf(alarmID)));
                     alarmID++;
-                    Intent i = new Intent(SettingMagicWordActivity.this,MainActivity.class);
+                   Intent i = new Intent(SetAlarmActivity.this, MainActivity.class);
                     startActivity(i);
                    overridePendingTransition(R.anim.screen_toleft, R.anim.screen_toright);
 

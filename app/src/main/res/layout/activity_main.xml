@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e5e5e5"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
-    <com.nusretozates.wake_up.CustomAnalogClock
+    <com.nusretozates.wake_up.CustomViews.CustomAnalogClock
         android:id="@+id/customAnalogClock"
         android:layout_width="0dp"
         android:layout_height="200dp"

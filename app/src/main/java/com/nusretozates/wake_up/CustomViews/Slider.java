@@ -1,4 +1,4 @@
-package com.nusretozates.wake_up;
+package com.nusretozates.wake_up.CustomViews;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,7 +12,10 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class Calendar extends View
+import com.nusretozates.wake_up.Activities.AlarmRecieverActivity;
+import com.nusretozates.wake_up.R;
+
+public class Slider extends View
 {
 
     /**
@@ -29,21 +32,19 @@ public class Calendar extends View
     private boolean isInit, dragstarted = false;  // it will be true once the clock will be initialized.
 
 
-
-
-    public Calendar(Context context) {
+    public Slider(Context context) {
         super(context);
     }
 
-    public Calendar(Context context, @Nullable AttributeSet attrs) {
+    public Slider(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public Calendar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public Slider(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public Calendar(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public Slider(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 

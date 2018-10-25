@@ -1,4 +1,4 @@
-package com.nusretozates.wake_up;
+package com.nusretozates.wake_up.Activities;
 
 import android.Manifest;
 import android.content.Intent;
@@ -12,6 +12,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.nusretozates.wake_up.Adapters.AlarmAdapter;
+import com.nusretozates.wake_up.R;
+import com.nusretozates.wake_up.Utils.Alarm;
 
 import java.util.Calendar;
 import java.util.Timer;
@@ -38,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         newAlarmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, SettingMagicWordActivity.class);
+                Intent i = new Intent(MainActivity.this, SetAlarmActivity.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.screen_toleft, R.anim.screen_toright);
             }
