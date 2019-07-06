@@ -12,15 +12,17 @@
         android:roundIcon="@mipmap/yuvarlak"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.SetAlarmActivity">
-        </activity>
+        <activity android:name=".Activities.asdasd"></activity>
+        <activity android:name=".Activities.SetAlarmActivity"></activity>
         <activity
             android:name=".Activities.AlarmRecieverActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>

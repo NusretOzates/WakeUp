@@ -95,7 +95,6 @@ class SetAlarmActivity : AppCompatActivity() {
             }
         }
 
-
     }
 
     companion object {

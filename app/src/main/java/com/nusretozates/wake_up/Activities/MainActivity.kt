@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.Button
 import android.widget.TextView
+
 import com.nusretozates.wake_up.Adapters.AlarmAdapter
 import com.nusretozates.wake_up.R
 import com.nusretozates.wake_up.Utils.Alarm
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         val alarmAdapter = AlarmAdapter(this, Alarm.alarms)
         recyclerView!!.adapter = alarmAdapter
         val linearLayoutManager = LinearLayoutManager(this)
-        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        linearLayoutManager.orientation = RecyclerView.VERTICAL
         recyclerView!!.layoutManager = linearLayoutManager
         if (ContextCompat.checkSelfPermission(this,
                         Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -88,6 +89,8 @@ class MainActivity : AppCompatActivity() {
                 } else
                     textView2!!.text = c.time.minutes.toString()
             }
+
+
 
         }
     }
